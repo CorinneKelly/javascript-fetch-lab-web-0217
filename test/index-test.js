@@ -4,10 +4,14 @@ const jsdom = require('jsdom')
 const path = require('path')
 
 describe('index', () => {
+  let $
+  
   before(done => {
+    const jq = path.resolve(__dirname, '..', 'jquery.js')
     const html = path.resolve(__dirname, '..', 'index.html')
     const handlebars = path.resolve(__dirname, '..', 'handlebars.js')
     const src = path.resolve(__dirname, '..', 'index.js')
+
 
     jsdom.env(html, [handlebars, src], (err, window) => {
       if (err) {
